@@ -7,34 +7,30 @@
     </ul>
     <p>Original message : {{ message }}</p>
     <p>Computed practise : {{ reverseMessage }}</p>
-    <!-- V -model -->
-    <input type="text" placeholder="Input" :value='modalValue'>
+    <!-- V - model -->
+    <input type="text" v-model="message" />
+    <br />
+    <br />
 
+    <!-- <input type="text" placeholder="Input" :value="modalValue" /> -->
+
+    <br />
+    <!-- List Rendering -->
+    <!-- <li v-for="n in evenNumbers" :key="numbers.value">{{ n }}</li>
+    <li v-for="(item, index) in Students">
+      {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li> -->
+   
+    <!-- Array  mutation -->
     
-    <input type="text" v-model="message"> <br>
-    <br>
-    <!-- V-model Modifiers -->
-    <label for="jack">Jack</label>
-
-    <input type="checkbox" id="jack" value="Jack" v-model.trim="checkedNames">
-
-    <label for="john">John</label>
-
-    <input type="checkbox" id="john" value="John" v-model.trim="checkedNames">
-     <br>
-    <span>Checked names: {{ checkedNames }}</span>
-
-
+   <br>
     <p class="foo bar">Hi</p>
     <!-- class binding with object syntex -->
     <button v-bind:class="computedObject">bindingWithobject</button>
-    
-    <!--  -->
   </div>
 </template>
 
 <script>
-import modalVue from './modal.vue';
 export default {
   data() {
     return {
@@ -42,10 +38,13 @@ export default {
       items: [{ message: "Hello" }, { message: "Loop" }],
       isActive: true,
       error: null,
-      checkedNames: [],
-      props: {
-          modalValue: String,
-      }
+      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      object: {
+      title: 'How to do lists in Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
+      },
+      
     };
   },
   computed: {
@@ -57,6 +56,11 @@ export default {
         active: this.isActive && !this.error,
         "text-danger": this.error && this.error.type === "fatal",
       };
+    },
+    evenNumbers() {
+      return this.numbers.filter(function (number) {
+        return number % 2 === 0;
+      });
     },
   },
 };

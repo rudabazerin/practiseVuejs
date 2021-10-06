@@ -5,6 +5,9 @@
      <!-- <signup> </signup>   -->
      <!-- <modal> </modal> -->
      <br>
+     <pracarr> </pracarr>
+     
+     <br>
      <todotask> </todotask>
   </div>
 </template>
@@ -14,15 +17,22 @@
 // import Signup from './components/signup.vue'
 import Newprac from './components/newprac.vue'
 import Todotask from './components/TodoTask.vue'
-
+import PracArr from './components/pracarr.vue'
 export default {
   name: 'App',
   components: {
     
     // Signup,
     Newprac,
-    Todotask
+    Todotask,
+    PracArr
   },
 }
 </script>
 
+<style>
+#app{
+  background-color: rgb(181, 247, 247);
+}
+
+</style>

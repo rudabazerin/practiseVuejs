@@ -20,7 +20,7 @@
     <input type="radio" value="10 kg Lentils" v-model="Amount" />
     <label for="one">10kg</label>
     <br />
-    <input type="radio" value="5kg lentils" v-model="Amount" />
+    <input type="radio" value="20kg lentils" v-model="Amount" />
     <label for="two">20kg</label>
 
     <br />
