@@ -5,7 +5,7 @@
       <input type="number" label="rollNo" v-model="studentObject.rollNo" >
       <input type="text" label="Fathers_name" v-model="studentObject.Fathers_name" >
       <input type="text" label="address" v-model="studentObject.address" >
-      <button>submit</button>
+      <button @click="onSubmit">submit</button>
     </form>
 
     <table>
@@ -34,18 +34,15 @@
 
 <script>
 export default {
-  //  name: '',
-  //  rollNo:'',
-  //  Fathers_Name:' ',
-  //  address:' ',  
+    
   data() {
     return {
-      studentObject: [{
+      studentObject: {
         name:'',
         rollNo:'',
         Fathers_Name: '',
         address: '',
-       }],
+       },
       students_details: [],
       button: {
         text: "Edit",
