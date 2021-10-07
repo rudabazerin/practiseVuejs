@@ -1,11 +1,11 @@
 <template>
   <div>
     <form v-on:submit.prevent="onSubmit">
-      <input type="text" label="name" v-model="name" >
-      <input type="number" label="rollNo" v-model="rollNo" >
-      <input type="text" label="Fathers_name" v-model="Fathers_name" >
-      <input type="text" label="address" v-model="address" >
-      <button @click='onSubmit'>submit</button>
+      <input type="text" label="name" v-model="studentObject.name" >
+      <input type="number" label="rollNo" v-model="studentObject.rollNo" >
+      <input type="text" label="Fathers_name" v-model="studentObject.Fathers_name" >
+      <input type="text" label="address" v-model="studentObject.address" >
+      <button>submit</button>
     </form>
 
     <table>
@@ -34,15 +34,18 @@
 
 <script>
 export default {
-  name: 'Student',
+  //  name: '',
+  //  rollNo:'',
+  //  Fathers_Name:' ',
+  //  address:' ',  
   data() {
     return {
-      studentObject: {
-        name:"",
-        rollNo: "",
-        Fathers_Name: "",
-        address: "",
-       },
+      studentObject: [{
+        name:'',
+        rollNo:'',
+        Fathers_Name: '',
+        address: '',
+       }],
       students_details: [],
       button: {
         text: "Edit",

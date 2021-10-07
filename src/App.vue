@@ -10,12 +10,12 @@
 </template>
 
 <script>
-
 import Student from './components/student.vue'
+
 export default {
   name: 'App',
   components: {
-   Student
+   Student,
   },
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{itemlists.length}}
     <button :click="addRow">Click Here to add</button>
     <button :click="removeRow(2)">Click Here to remove</button>
   </div>
