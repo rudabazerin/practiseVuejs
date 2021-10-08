@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      return this.students_details.push(this.studentObject);
+       this.students_details.push(this.studentObject);
     },
     changeBtn() {
       student.edit = !student.edit;

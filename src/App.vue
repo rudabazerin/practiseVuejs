@@ -1,21 +1,20 @@
 <template>
-  <div>
-     <h1> Welcome</h1>
-     <br>
-     <br>
-     <student> </student>
-     
+    <div class="home">
+  <!-- Practise of dynamic and async components -->
+     <MyHome> </MyHome>
 
   </div>
+  
 </template>
 
 <script>
-import Student from './components/student.vue'
-
+import MyHome from './components/MyHome'
 export default {
   name: 'App',
   components: {
-   Student,
+    
+    MyHome,
+   
   },
 }
 </script>
