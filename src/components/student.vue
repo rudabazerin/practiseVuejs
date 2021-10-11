@@ -1,66 +1,69 @@
 <template>
   <div>
     <form v-on:submit.prevent="onSubmit">
-      <input type="text" label="name" v-model="studentObject.name" >
-      <input type="number" label="rollNo" v-model="studentObject.rollNo" >
-      <input type="text" label="Fathers_name" v-model="studentObject.Fathers_name" >
-      <input type="text" label="address" v-model="studentObject.address" >
-      <button @click="onSubmit">submit</button>
+      <label for="new-student">Add new student:</label>
+      <input type="text" label="name" v-model="studentObj.name" >
+      <input type="number" label="rollNo" v-model="studentObj.rollNo" >
+      <input type="text" label="Fathers_name" v-model="studentObj.FathersName" >
+      <input type="text" label="address" v-model="studentObj.address" >
+      <button>submits</button>
     </form>
+ 
 
     <table>
       <thead>
         <tr>
           <th>name</th>
           <th>rollNo</th>
-          <th>action</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>miraz</td>
-          <td>100</td>
-          <td>
+        <tr v-for='(item, index) in studentList'>
+          
+          <td> {{item.name}} </td>
+          <td> {{item.rollNo}}</td>
+
+           <td>
             <button @click="changeBtn">{{ button.text }}</button>
-            <button @click="delArr(index)">delete</button>
-          </td>
+            <button >View</button>
+            <button @click='delArr(index)'>Delete </button>
+         </td>
         </tr>
       </tbody>
     </table>
-    <br />
+    <br>
   </div>
 </template>
 
 
 <script>
 export default {
-    
   data() {
     return {
-      studentObject: {
-        name:'',
-        rollNo:'',
-        Fathers_Name: '',
-        address: '',
-       },
-      students_details: [],
-      button: {
-        text: "Edit",
-      },
-      edit: true,
-    };
+     studentObj:
+      {
+      name: '', rollNo: '', FathersName: '',address: '',
+     }, 
+     studentList:[],
+     button:{
+       text: 'Edit',
+     },
+     edit:true,
+     completed: false,
+    }
   },
   methods: {
-    onSubmit() {
-       this.students_details.push(this.studentObject);
+    onSubmit(){
+      this.studentList.push(this.studentObj);
     },
-    changeBtn() {
-      student.edit = !student.edit;
-      student.button.text = student.edit ? "Edit" : "Update";
+
+    delArr(index){
+      this.studentList.splice(index,1);
     },
-    delArr(index) {
-      this.students_details.splice(index, 1);
-    },
-  },
+    changeBtn(){
+      this.edit = !this.edit,
+      this.button.text = this.edit ? 'Edit' : 'Update'
+    }
+  }
 };
 </script>
