@@ -24,23 +24,27 @@
         <tr v-for="(item, index) in studentList" v-bind:key="studentList.name">
           <td>{{ item.name }}</td>
           <td>{{ item.rollNo }}</td>
+        
 
           <td>
             <button @click="changeBtn">{{ button.text }}</button>
             <button @click="delArr(index)">Delete</button>
             <button @click="show(index)">View</button>
+            <button @click="hide(index)">Hide details</button>
 
            <td>
               <div v-show="showRow">
               {{ item.name }} {{ item.rollNo }} {{ item.FathersName }}
               {{ item.address }}
-            </div>
+              </div>
            </td>
-          </td>
-        </tr>
+           </tr>
+        
+ 
+        
       </tbody>
     </table>
-    <br />
+    
   </div>
 </template>
 
@@ -61,11 +65,14 @@ export default {
       },
       edit: true,
       showRow: false,
+      isHidden: true
+      
     };
   },
   methods: {
     onSubmit() {
       this.studentList.push(this.studentObj);
+      this.studentObj = ' '
     },
 
     delArr(index) {
@@ -74,11 +81,14 @@ export default {
 
     changeBtn() {
       (this.edit = !this.edit),
-        (this.button.text = this.edit ? "Edit" : "Update");
+      (this.button.text = this.edit ? "Edit" : "Update");
     },
-    show(index) {
-      this.showRow = true;
+    show(index){
+      this.showRow = true
     },
-  },
-};
+    hide(index){
+      this.showRow = false
+    }
+  }
+}
 </script>
