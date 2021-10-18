@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in studentList" v-bind:key="studentList.name">
+        <tr v-for="(item, index) in studentList" v-bind:key="index">
           <td>{{ item.name }}</td>
           <td>{{ item.rollNo }}</td>
         
@@ -29,17 +29,18 @@
           <td>
             <button @click="changeBtn">{{ button.text }}</button>
             <button @click="delArr(index)">Delete</button>
-            <button @click="show(index)">View</button>
-            <button @click="hide(index)">Hide details</button>
+            <button @click="show(index)"> {{ button.text1 }}</button>
+            
 
            <td>
-              <div v-show="showRow">
-              {{ item.name }} {{ item.rollNo }} {{ item.FathersName }}
-              {{ item.address }}
+              <div v-show="itemToShow == index" >
+              <!-- {{ show(index) }} -->
+                {{ item.name }} {{ item.rollNo }}  {{ item.FathersName }} {{ item.address }} 
               </div>
+              
            </td>
            </tr>
-        
+
  
         
       </tbody>
@@ -62,17 +63,23 @@ export default {
       studentList: [],
       button: {
         text: "Edit",
+        text1: "View"
       },
       edit: true,
       showRow: false,
-      isHidden: true
+      itemToShow : -1,
       
     };
   },
   methods: {
     onSubmit() {
       this.studentList.push(this.studentObj);
-      this.studentObj = ' '
+      this.studentObj = {
+        name : '',
+        rollNo: "",
+        FathersName: "",
+        address: "",
+      }
     },
 
     delArr(index) {
@@ -81,14 +88,14 @@ export default {
 
     changeBtn() {
       (this.edit = !this.edit),
-      (this.button.text = this.edit ? "Edit" : "Update");
+      (this.button.text = this.edit ? "Edit" : "Update")
     },
     show(index){
-      this.showRow = true
+      this.showRow = !this.showRow,
+      this.itemToShow = index,
+      (this.button.text1 = this.showRow ? "View" : "Hide")
+
     },
-    hide(index){
-      this.showRow = false
-    }
   }
 }
 </script>
