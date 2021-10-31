@@ -24,20 +24,16 @@
         <tr v-for="(item, index) in studentList" v-bind:key="index">
           <td>{{ item.name }}</td>
           <td>{{ item.rollNo }}</td>
-        
-
           <td>
             <button @click="changeBtn">{{ button.text }}</button>
             <button @click="delArr(index)">Delete</button>
-            <button @click="show(index)"> {{ button.text1 }}</button>
-            
-
+            <button @click.once="show(index)"> {{ button.text1 }}</button>
+            <button @click="hide(index)">Hide</button>
            <td>
-              <div v-show="itemToShow == index" >
+              <div v-if="showRow = !showRow" v-show="itemToShow == index">
               <!-- {{ show(index) }} -->
                 {{ item.name }} {{ item.rollNo }}  {{ item.FathersName }} {{ item.address }} 
-              </div>
-              
+              </div>     
            </td>
            </tr>
 
@@ -63,7 +59,7 @@ export default {
       studentList: [],
       button: {
         text: "Edit",
-        text1: "View"
+        text1: "Show Details"
       },
       edit: true,
       showRow: false,
@@ -75,7 +71,7 @@ export default {
     onSubmit() {
       this.studentList.push(this.studentObj);
       this.studentObj = {
-        name : '',
+        name : "",
         rollNo: "",
         FathersName: "",
         address: "",
@@ -92,10 +88,13 @@ export default {
     },
     show(index){
       this.showRow = !this.showRow,
-      this.itemToShow = index,
-      (this.button.text1 = this.showRow ? "View" : "Hide")
-
-    },
+      this.itemToShow = index
+      // event.target.disabled = true
+      },
+    hide(index){
+      this.showRow = false,
+      this.itemToShow = index
+    }
   }
 }
 </script>
